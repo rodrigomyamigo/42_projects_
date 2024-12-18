@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print.c                                         :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/15 23:12:03 by kkrasnod          #+#    #+#             */
-/*   Updated: 2024/12/18 01:47:22 by kkrasnod         ###   ########.fr       */
+/*   Created: 2024/12/18 01:34:22 by kkrasnod          #+#    #+#             */
+/*   Updated: 2024/12/18 01:59:58 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	return (c >= 32 && c <= 126);
+	size_t	i;
+
+	if (!size)
+		return (ft_strlen(src));
+	if (size)
+		while (i < (size - ft_strlen(dst) - 1))
+		{
+		}
 }
