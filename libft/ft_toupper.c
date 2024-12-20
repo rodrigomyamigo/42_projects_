@@ -6,7 +6,7 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 02:00:27 by kkrasnod          #+#    #+#             */
-/*   Updated: 2024/12/18 02:09:31 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2024/12/19 00:29:25 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
+	return (c - (c >= 'a' && c <= 'z') * 32);
 }

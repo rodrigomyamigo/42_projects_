@@ -6,7 +6,7 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 02:05:20 by kkrasnod          #+#    #+#             */
-/*   Updated: 2024/12/18 02:06:11 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2024/12/18 23:44:08 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	ft_tolower(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
-	return (c);
+	return (c + ((c >= 'A' && c <= 'Z') * 32));
 }
