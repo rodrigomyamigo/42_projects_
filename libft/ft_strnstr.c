@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 21:48:25 by kkrasnod          #+#    #+#             */
-/*   Updated: 2024/12/21 00:05:38 by kkrasnod         ###   ########.fr       */
+/*   Created: 2024/12/21 02:31:28 by kkrasnod          #+#    #+#             */
+/*   Updated: 2024/12/21 03:13:50 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
+	size_t	count;
 
-	j = 0;
-	i = ft_strlen(dst);
-	if (!src)
-		return (ft_strlen(dst));
-	while (src[j] && j < (size - ft_strlen(dst) - 1))
-		dst[i++] = src[j++];
-	dst[i + j] = 0;
-	return (ft_strlen(dst));
+	count = ft_strlen(little);
+	i = 0;
+	if (!little)
+	{
+		return (big);
+	}
+	while (big[i] && i < len)
+	{
+		if (big[i] == little[i])
+		{
+			count--;
+			j = i;
+			while (big[j])
+				if (count == 0)
+					return (&little[0]);
+		}
+		i++;
+	}
+	return (NULL);
 }

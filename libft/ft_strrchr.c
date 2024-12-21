@@ -6,13 +6,13 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 22:44:45 by kkrasnod          #+#    #+#             */
-/*   Updated: 2024/12/18 23:38:41 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2024/12/20 21:34:08 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchar(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 

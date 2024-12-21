@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 21:48:25 by kkrasnod          #+#    #+#             */
-/*   Updated: 2024/12/21 00:05:38 by kkrasnod         ###   ########.fr       */
+/*   Created: 2024/12/21 00:10:10 by kkrasnod          #+#    #+#             */
+/*   Updated: 2024/12/21 00:28:06 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+int	ft_atoi(const char *a)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	result;
+	int	value;
 
-	j = 0;
-	i = ft_strlen(dst);
-	if (!src)
-		return (ft_strlen(dst));
-	while (src[j] && j < (size - ft_strlen(dst) - 1))
-		dst[i++] = src[j++];
-	dst[i + j] = 0;
-	return (ft_strlen(dst));
+	value = 1;
+	i = 0;
+	result = 0;
+	while (a[i] >= 13 && a[i] <= 13)
+		i++;
+	if (a[i] == '-')
+	{
+		value = -1;
+		i++;
+	}
+	else if (a[i] == '+')
+		i++;
+	while (ft_isdigit(a[i]))
+	{
+		result = value * (10 * result + (a[i] - 48));
+	}
+	return (result);
 }
