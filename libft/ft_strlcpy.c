@@ -6,7 +6,7 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 22:38:51 by kkrasnod          #+#    #+#             */
-/*   Updated: 2024/12/20 21:21:13 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2024/12/24 02:46:44 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		dst[i] = src[i];
 		i++;
 	}
+	dst[i] = 0;
 	return (ft_strlen(src));
 }

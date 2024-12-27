@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/15 23:57:21 by kkrasnod          #+#    #+#             */
-/*   Updated: 2024/12/24 02:51:14 by kkrasnod         ###   ########.fr       */
+/*   Created: 2024/12/23 19:21:11 by kkrasnod          #+#    #+#             */
+/*   Updated: 2024/12/24 01:55:46 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned char		*ptr;
-	const unsigned char	*ptr_src;
+	unsigned char	*ptr;
 
-	ptr = (unsigned char *)dest;
-	ptr_src = (const unsigned char *)src;
-	while (n--)
-	{
-		if (ptr > ptr_src)
-			*ptr++ = *ptr_src++;
-		else
-			ptr[n] = ptr_src[n];
-	}
-	return (dest);
+	ptr = NULL;
+	if (size >= SIZE_MAX / nmemb)
+		return (NULL);
+	if (size == 0 && nmemb == 0)
+		ptr = (unsigned char *)malloc(nmemb * size);
+	else if (size == 0 || nmemb == 0)
+		return (ptr);
+	ptr = (unsigned char *)malloc(nmemb * size);
+	ft_bzero(ptr, (size * nmemb));
+	return (ptr);
 }

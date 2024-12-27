@@ -6,7 +6,7 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 02:31:28 by kkrasnod          #+#    #+#             */
-/*   Updated: 2024/12/21 03:13:50 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2024/12/24 02:49:33 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	i = 0;
 	if (!little)
 	{
-		return (big);
+		return ((char *)big);
 	}
 	while (big[i] && i < len)
 	{
@@ -32,7 +32,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			j = i;
 			while (big[j])
 				if (count == 0)
-					return (&little[0]);
+					return ((char *)(&little[0]));
 		}
 		i++;
 	}

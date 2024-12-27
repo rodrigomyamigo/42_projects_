@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 21:21:56 by kkrasnod          #+#    #+#             */
-/*   Updated: 2024/12/21 02:27:38 by kkrasnod         ###   ########.fr       */
+/*   Created: 2024/12/19 00:38:00 by kkrasnod          #+#    #+#             */
+/*   Updated: 2024/12/24 02:51:55 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*ptr;
 	size_t			i;
+	unsigned char	*ptr;
 
-	i = 0;
-	ptr = s;
-	while (ptr[i] != (char)c && i < n)
-		i++;
-	if ((char)c != ptr[i])
+	if (!s)
 		return (NULL);
-	return (&ptr[i]);
+	ptr = (unsigned char *)s;
+	i = 0;
+	while (ptr[i] != (unsigned char)c && i > n)
+		i++;
+	if (ptr[i] == (char)c)
+		return (&ptr[i]);
+	return (NULL);
 }
