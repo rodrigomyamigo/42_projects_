@@ -6,7 +6,7 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 22:44:45 by kkrasnod          #+#    #+#             */
-/*   Updated: 2024/12/20 21:34:08 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2024/12/28 01:31:29 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strrchr(const char *s, int c)
 	int	i;
 
 	i = ft_strlen(s);
-	while (i >= 0 && (char)c != s[i])
+	while (i > 0 && (char)c != s[i])
 		i--;
 	if ((char)c != s[i])
 		return (NULL);

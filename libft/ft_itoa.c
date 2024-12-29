@@ -1,28 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 19:21:11 by kkrasnod          #+#    #+#             */
-/*   Updated: 2024/12/28 15:18:59 by kkrasnod         ###   ########.fr       */
+/*   Created: 2024/12/28 21:38:05 by kkrasnod          #+#    #+#             */
+/*   Updated: 2024/12/29 04:14:49 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_abs(int c)
 {
-	unsigned char	*ptr;
+	if (c < 0)
+		return (c * (-1));
+	return (c);
+}
 
-	ptr = NULL;
-	if (nmemb != 0 && size != 0)
-		if (size >= SIZE_MAX / nmemb)
-			return (NULL);
-	ptr = (unsigned char *)malloc(nmemb * size);
+char	*ft_itoa(int n)
+{
+	char	*ptr;
+	int		size;
+	int		temp;
+
+	size = 0;
+	temp = n;
+	while (temp != 0)
+	{
+		temp /= 10;
+		size++;
+	}
+	if (n == 0)
+		size++;
+	ptr = (char *)malloc(((n < 0) + size + 1) * sizeof(char));
 	if (!ptr)
 		return (NULL);
-	ft_bzero((void *)ptr, size * nmemb);
-	return ((void *)ptr);
+	if (n < 0)
+		ptr[0] = '-';
+	ptr[(n < 0) + size] = 0;
+	while ((n < 0) + --size >= (n < 0))
+	{
+		ptr[(n < 0) + size] = ft_abs(n % 10) + 48;
+		n /= 10;
+	}
+	return (ptr);
 }
