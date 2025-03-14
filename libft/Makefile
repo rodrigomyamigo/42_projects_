@@ -32,10 +32,6 @@ all: $(NAME)
 bonus:	$(NAME) $(BONUSOBJS)
 	$(LIBC) $(NAME) $(BONUSOBJS)
 
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJS) $(BONUSOBJS)
-
 clean:
 	$(RM) $(NAME) $(OBJS) $(BONUSOBJS)
 
