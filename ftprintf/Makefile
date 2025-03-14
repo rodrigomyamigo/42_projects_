@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 AR = ar rcs            # Command to create a static library
 
-SRC = ft_printf.c      # Source files
+SRC = ft_printf.c , support_func
 
 OBJ = $(SRC:.c=.o)     # Object files (.c -> .o)
 
