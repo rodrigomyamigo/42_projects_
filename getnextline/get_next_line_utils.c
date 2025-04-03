@@ -6,7 +6,7 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 20:45:18 by kkrasnod          #+#    #+#             */
-/*   Updated: 2025/04/01 17:10:52 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:21:05 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
+	// czy musze dodac free(s1) jezeli (joined_s) bedzie s1???
 	joined_s = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
 	if (!joined_s)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:07:50 by kkrasnod          #+#    #+#             */
-/*   Updated: 2025/04/01 17:12:23 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:21:02 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 # define GET_NEXT_LINE_H
 
-# include <fcntl.h> /// library ffor handling files --> open
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
+
+//# include <fcntl.h> /// library for handling files --> open
 # include <stdlib.h>
 # include <unistd.h>
 
