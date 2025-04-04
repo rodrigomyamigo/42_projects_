@@ -6,7 +6,7 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 20:45:18 by kkrasnod          #+#    #+#             */
-/*   Updated: 2025/04/03 15:21:05 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2025/04/04 21:57:33 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char	*ft_strdup(const char *s)
 	dup = (char *)malloc((i + 1) * sizeof(char));
 	if (!dup)
 	{
-		printf("Memory allocated incorrectly.\n");
 		return (NULL);
 	}
 	i = 0;
@@ -81,7 +80,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (sub_s);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*joined_s;
 	size_t	s1_len;
@@ -95,7 +94,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	// czy musze dodac free(s1) jezeli (joined_s) bedzie s1???
 	joined_s = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
 	if (!joined_s)
 		return (NULL);
