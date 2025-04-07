@@ -6,7 +6,7 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:32:49 by kkrasnod          #+#    #+#             */
-/*   Updated: 2025/04/07 15:08:55 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:08:53 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ char	*get_next_line(int fd)
 	if (!stash)
 		return (NULL);
 	display_line = return_line(stash);
-	if (!display_line)
-		return (NULL);
 	stash = clean_stash(stash);
+	if (!display_line)
+	{
+		free(stash);
+		return (NULL);
+	}
 	return (display_line);
 }
 
@@ -34,7 +37,6 @@ char	*fill_and_find_newline(int fd, char *stash)
 	char	*buffer;
 	int		r;
 
-	//buffer = (char *)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
@@ -44,21 +46,21 @@ char	*fill_and_find_newline(int fd, char *stash)
 		r = read(fd, buffer, BUFFER_SIZE);
 		if (r == -1)
 		{
+			free(stash);
 			free(buffer);
 			return (NULL);
 		}
+		buffer[r] = '\0';
 		if (!stash)
 			stash = ft_strdup(buffer);
 		else
 			stash = join_and_free(stash, buffer);
-		if (ft_strchr(stash, '\n'))
+		if (!stash || ft_strchr(stash, '\n'))
 			break ;
 	}
 	free(buffer);
 	return (stash);
 }
-	//buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	//buffer = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 
 char	*join_and_free(char *s1, char *s2)
 {
@@ -77,12 +79,9 @@ char	*clean_stash(char *stash)
 	char	*temp;
 	int		len;
 
-	len = 0;
-	while (stash[len])
-		len++;
-	new_start = 0;
 	if (!stash)
 		return (NULL);
+	new_start = 0;
 	while (stash[new_start] && stash[new_start] != '\n')
 		new_start++;
 	if (!stash[new_start])
@@ -90,9 +89,8 @@ char	*clean_stash(char *stash)
 		free(stash);
 		return (NULL);
 	}
-	if (stash[new_start] == '\n')
-		new_start++;
-	temp = ft_substr(stash, new_start, len);
+	len = ft_strlen(stash);
+	temp = ft_substr(stash, new_start + 1, len);
 	if (!temp)
 		return (NULL);
 	free(stash);
@@ -126,74 +124,21 @@ char	*return_line(char *stash)
 	display_line[i] = '\0';
 	return (display_line);
 }
-
-//void	*ft_calloc(size_t count, size_t size)
-//{
-//	void	*ptr;
-//	size_t	i;
-
-//	i = 0;
-//	ptr = malloc(count * size);
-//	if (!ptr)
-//		return (NULL);
-//	while (i < count * size)
-//	{
-//		((unsigned char *)ptr)[i] = 0;
-//	}
-//	return (ptr);
-//}
-
-//display_line = clean_stash_return_line(stash);
-//char	*clean_stash_return_line(char *stash)
-//{
-//	int		len;
-//	int		new_loc;
-//	char	*temp;
-//	char	*display_line;
-
-//	if (!stash)
-//		return (NULL);
-//	len = ft_strlen(stash);
-//	new_loc = 0;
-//	while (stash[new_loc] && stash[new_loc] != '\n')
-//		new_loc++;
-//	display_line = (char *)malloc((new_loc + 2) * sizeof(char));
-//	temp = ft_substr(stash, new_loc, len);
-//	if (!temp)
-//		return (NULL);
-//	free(stash);
-//	new_loc = 0;
-//	while (temp[new_loc] && temp[new_loc] != '\n')
-//	{
-//		display_line[new_loc] = temp[new_loc];
-//		new_loc++;
-//	}
-//	display_line[new_loc] = '\0';
-//	stash = temp;
-//	return (display_line);
-//}
-
- int	open_file(const char *fileName) /// dziala milo
+#include <stdio.h>
+ int	main(void)
 {
-	int file;
-	if ((file = open(fileName, O_RDONLY)) == -1)
+	int fd = open("test.txt", O_RDONLY);
+	char *line;
+
+	line  = get_next_line(fd);
+	while (line)
 	{
-		write(1, "Cannot open file\n", 17);
-		return (1);
+		printf("%s", line);
+		free(line);
+		line  = get_next_line(fd);
+
 	}
-	write(1, "File opened\n", 12);
-	return (file); // zwraca fd
+	close(fd);
+	free(line);
+	return (0);
 }
-
-// int	main(void)
-//{
-//	char filename[] ="/nfs/homes/kkrasnod/student_Projects/github_libft/getnextline/t.txt";
-//	// -> succes case
-//	// char filename[] = "book.txt"; // fail case -> no such file
-//	int fd = open_file(filename);
-//	char *line;
-//	int fd1;
-//	int fd2;
-
-//	return (0);
-//}

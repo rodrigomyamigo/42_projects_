@@ -6,7 +6,7 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:07:50 by kkrasnod          #+#    #+#             */
-/*   Updated: 2025/04/07 14:54:41 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:09:29 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # define BUFFER_SIZE 5
 # endif
 
-# include <fcntl.h> /// library for handling files --> open
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -29,13 +28,9 @@ char	*join_and_free(char *s1, char *s2);
 char	*return_line(char *stash);
 char	*get_next_line(int fd);
 
-//char	*fill_and_find_newline(int fd, char *stash);
-
-//char	*clean_stash_return_line(char *stash);
-//void	*ft_calloc(size_t count, size_t size);
 //_utils
 char	*ft_strchr(const char *s, int c);
-//int		ft_strlen(const char *s);
+int		ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
