@@ -6,7 +6,7 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:32:49 by kkrasnod          #+#    #+#             */
-/*   Updated: 2025/04/07 16:08:53 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2025/04/07 19:27:29 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*get_next_line(int fd)
 {
-	char		*display_line;
 	static char	*stash;
+	char		*display_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -46,7 +46,6 @@ char	*fill_and_find_newline(int fd, char *stash)
 		r = read(fd, buffer, BUFFER_SIZE);
 		if (r == -1)
 		{
-			free(stash);
 			free(buffer);
 			return (NULL);
 		}
@@ -123,22 +122,4 @@ char	*return_line(char *stash)
 	}
 	display_line[i] = '\0';
 	return (display_line);
-}
-#include <stdio.h>
- int	main(void)
-{
-	int fd = open("test.txt", O_RDONLY);
-	char *line;
-
-	line  = get_next_line(fd);
-	while (line)
-	{
-		printf("%s", line);
-		free(line);
-		line  = get_next_line(fd);
-
-	}
-	close(fd);
-	free(line);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: kkrasnod <kkrasnod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:07:50 by kkrasnod          #+#    #+#             */
-/*   Updated: 2025/04/07 16:09:29 by kkrasnod         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:24:25 by kkrasnod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 5
+#  define BUFFER_SIZE 5
 # endif
 
 # include <stdlib.h>
